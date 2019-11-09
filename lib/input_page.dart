@@ -2,13 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'constants.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const activeCardColour = Color(0xff1d1e33);
-const bottomContainerHeight = 50.0;
-const inactiveCardColour = Color(0xff111328);
-const bottomContainerColour = Color(0xffeb1555);
 
 enum sex { male, female }
 
@@ -26,6 +22,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
@@ -33,8 +30,8 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: selectedSex == sex.male
-                        ? activeCardColour
-                        : inactiveCardColour,
+                        ? kActiveCardColour
+                        : KInactiveCardColour,
                     onPress: () {
                       setState(() {
                         selectedSex = sex.male;
@@ -54,8 +51,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedSex == sex.female
-                        ? activeCardColour
-                        : inactiveCardColour,
+                        ? kActiveCardColour
+                        : KInactiveCardColour,
                     cardChild: new CardChildWidget(
                       myIconData: FontAwesomeIcons.venus,
                       iconLable: "FEMALE",
@@ -67,17 +64,39 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: activeCardColour,
+              colour: kActiveCardColour,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Height',
+                    style: kLableTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '180',
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                      ),
+                      Slider(),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: new ReusableCard(colour: activeCardColour),
+                  child: new ReusableCard(colour: kActiveCardColour),
                 ),
                 Expanded(
-                  child: new ReusableCard(colour: activeCardColour),
+                  child: new ReusableCard(colour: kActiveCardColour),
                 ),
               ],
             ),
@@ -91,10 +110,10 @@ class _InputPageState extends State<InputPage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0),
               ),
             )),
-            color: bottomContainerColour,
+            color: kBottomContainerColour,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: KBottomContainerHeight,
           )
         ],
       ),
