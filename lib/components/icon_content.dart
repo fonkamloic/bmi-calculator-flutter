@@ -14,10 +14,10 @@ class CardChildWidget extends StatelessWidget {
       children: <Widget>[
         Icon(
           myIconData,
-          size: 80.0,
+          size: 70.0,
         ),
         SizedBox(
-          height: 15.0,
+          height: 7.0,
         ),
         Text(
           iconLable,
