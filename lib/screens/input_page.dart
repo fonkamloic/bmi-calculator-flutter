@@ -1,13 +1,12 @@
+import 'package:bmi_calculator/components/buttom_button.dart';
+import 'package:bmi_calculator/components/constants.dart';
+import 'package:bmi_calculator/components/icon_content.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'components/buttom_button.dart';
-import 'constants.dart';
-import 'components/icon_content.dart';
-import 'results_page.dart';
-import 'components/reusable_card.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -153,7 +152,7 @@ class _InputPageState extends State<InputPage> {
                               icon: FontAwesomeIcons.minus,
                               change: () {
                                 setState(() {
-                                  if (weight > 80) weight--;
+                                  if (weight > 15) weight--;
                                 });
                               },
                             ),
@@ -220,6 +219,7 @@ class _InputPageState extends State<InputPage> {
                     .show();
                 return;
               }
+              setState(() {});
 
               Navigator.push(
                   context,
